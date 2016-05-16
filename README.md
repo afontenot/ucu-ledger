@@ -19,10 +19,10 @@
     
 # What does it do?
     
-One script connects to the University Credit Union 
-(https://ucu.org) servers and downloads a CSV of transactions in a 
+One script connects to the [University Credit Union](https://ucu.org)
+servers and downloads a CSV of transactions in a 
 specified date range. The other script processes the CSV file to 
-create a .dat file compatible with Ledger (http://ledger-cli.org). 
+create a .dat file compatible with [Ledger](http://ledger-cli.org). 
 The script is capable of replacing unhelpful descriptions in the CSV 
 with more verbose ones. See replacements.txt for the format.
     
