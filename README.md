@@ -33,20 +33,20 @@ might make the scripts useful to a wider audience.
 # Requirements
 
 UCU-LEDGER requires Python 3 and Python-requests. You'll also 
-need Ledger (ledger-cli on Github) for these scripts to be useful. 
+need [Ledger](http://ledger-cli.org) ([ledger](https://github.com/ledger/ledger) on Github) for these scripts to be useful. 
     
 # Usage
     
 ## ucu2csv.py usage:
-        ucu2csv.py [-h] [--start date] [--end date] output.csv
-        
-        positional arguments:
-          output.csv    the csv output file
+    ucu2csv.py [-h] [--start date] [--end date] output.csv
+    
+    positional arguments:
+      output.csv    the csv output file
 
-        other arguments:
-          -h, --help    show this help message and exit
-          --start date  csv start date in ISO 8601 (YYYY-MM-DD)
-          --end date    csv end date in ISO 8601 (YYYY-MM-DD) 
+    other arguments:
+      -h, --help    show this help message and exit
+      --start date  csv start date in ISO 8601 (YYYY-MM-DD)
+      --end date    csv end date in ISO 8601 (YYYY-MM-DD) 
           
 None of the arguments (except the output file) are required. 
 If the start or end date are not provided, you will be prompted when 
@@ -60,26 +60,26 @@ IP address for the first time. I will add code for this next item I
 am prompted to enter security questions.
     
 ## csv2ledger.py usage:
-        csv2ledger.py [-h] -a Account:Name [-r replacements.txt] input.csv
+    csv2ledger.py [-h] -a Account:Name [-r replacements.txt] input.csv
 
-        positional arguments:
-          input.csv             the CSV input file
+    positional arguments:
+      input.csv             the CSV input file
 
-        other arguments:
-          -h, --help            show this help message and exit
-          -a Account:Name, --account Account:Name
-                                ledger account name (e.g. Assets:Checking)
-          -r replacements.txt, --replace replacements.txt
-                                file containing replacements for CSV descriptions
+    other arguments:
+      -h, --help            show this help message and exit
+      -a Account:Name, --account Account:Name
+                            ledger account name (e.g. Assets:Checking)
+      -r replacements.txt, --replace replacements.txt
+                            file containing replacements for CSV descriptions
                                 
-The --account argument is required. This option will tell the 
+The *--account* argument is required. This option will tell the 
 script what account the CSV file is for. So if you're running the 
 script on the CSV from your checking account, you'll want something 
 like "Assets:Checking" here. The script will put this on the credit 
 line when the transaction is a credit, and the debit line when the 
 transaction is a debit. 
         
-The --replace argument is not required. If provided, the 
+The *--replace* argument is not required. If provided, the 
 script will try to open a text file at that location and use it to 
 provide more useful transaction descriptions in the .dat file. The 
 syntax of the replacements file is shown below.
@@ -103,14 +103,14 @@ match (lower case). Any transaction with a description matching this
 line will have its description replaced by the second item in the 
 tuple. 
         
- If a third item in the tuple is provided, it will provide a 
+If a third item in the tuple is provided, it will provide a 
 source account for the transaction to Ledger. So if the transaction 
 is a credit, the source account will be the account the amount is 
 debited from. And if the transaction is a debit, the source account 
 is the account the amount if debited from. See the sample below.
         
-        ("ralphs", "Ralphs", "Expenses:Groceries")
-        ("wholefds", "Whole Foods", "Expenses:Groceries")
-        ("amazon.com", "Amazon")
-        ("ladwp", "LADWP - power bill", "Expenses:Utilities")
-        ("apye", "Monthly Dividend Deposit", "Income:Dividends")
+    ("ralphs", "Ralphs", "Expenses:Groceries")
+    ("wholefds", "Whole Foods", "Expenses:Groceries")
+    ("amazon.com", "Amazon")
+    ("ladwp", "LADWP - power bill", "Expenses:Utilities")
+    ("apye", "Monthly Dividend Deposit", "Income:Dividends")
