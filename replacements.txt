@@ -1,0 +1,5 @@
+("ralphs", "Ralphs", "Expenses:Groceries")
+("wholefds", "Whole Foods", "Expenses:Groceries")
+("amazon.com", "Amazon")
+("ladwp", "LADWP - power bill", "Expenses:Utilities")
+("apye", "Monthly Dividend Deposit", "Income:Dividends")
