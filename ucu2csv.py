@@ -7,8 +7,12 @@ import requests
 
 from datetime import date, datetime
 
+# main url (important to get sesh cookies before post)
+main_url = "https://www.ucu.org"
+
 # login POST url
 auth_url = "https://secure.ucu.org/hb/login"
+auth_headers = {"User-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0"}
 
 # login POST request data
 user_post = "account"
@@ -78,10 +82,13 @@ pw = getpass.getpass()
 auth_data = {user_post: user, pw_post: pw}
 
 # send auth request, use cookies to get the suffix url and find matches
-# block redirects so we can get the cookies from the response
-auth = requests.post(auth_url, data = auth_data, allow_redirects = False)
-if auth.status_code == 200: # user / password not correct
+# use response.history to check for redirects 
+auth = requests.Session()
+auth.get(main_url)
+auth_response = auth.post(auth_url, data = auth_data, headers = auth_headers)
+if not auth_response.history: # user / password not correct
     raise SystemExit("Login unsuccessful!")
+
 suffixes_raw = requests.get(suffix_url, cookies = auth.cookies).text
 suffixes_matches = re.findall(suffix_pattern, suffixes_raw)
 
