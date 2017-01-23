@@ -1,7 +1,7 @@
 # License
 
     UCU-LEDGER: a simple set of scripts to make using Ledger with UCU easier
-    Copyright (C) 2016 Adam Fontenot
+    Copyright (C) 2016-2017 Adam Fontenot
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
